@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btnLogin">Login</button>
+    <button id="btnFlush">Flush</button>
+
+    <script src="https://unpkg.com/@lamion-libs/impl/dist/bundle.js"></script>
+
+    <script>
+      const { useLogger, flush } = useBrowserLamion({
+        accessKey: "123",
+        autoFlush: false,
+      });
+
+      const loginLogger = useLogger("login", "authorization");
+
+      document.getElementById("btnLogin").addEventListener("click", () => {
+        loginLogger.log();
+      });
+
+      document.getElementById("btnFlush").addEventListener("click", () => {
+        flush();
+      });
+    </script>
+  </body>
+</html>
